@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return leftText.resignFirstResponder()
 
     }
+    //poopoo
 
     
 
