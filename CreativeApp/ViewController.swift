@@ -28,14 +28,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func divide(_ sender: UIButton) {
             if !leftText.isEditing && !rightText.isEditing{
-                if !leftText.isEqual(""){
+                if !empty{
                     if calcText.text?.suffix(1) != "+" && calcText.text?.suffix(1) != "/" && calcText.text?.suffix(1) != "-" && calcText.text?.suffix(1) != "*"{
                         if !complete {
                         calcText.text = calcText.text! + "/"
                         operatorr = "/"
                         leftLabel.text = ""
                         } else {
-                            leftLabel.text = "The equation is done, press equal"
+                            leftLabel.text = "The equation is done, press equal or clear"
                         }
                     } else {
                         leftLabel.text = "There is already an operator there"
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func multiply(_ sender: UIButton) {
         if !leftText.isEditing && !rightText.isEditing{
-            if !leftText.isEqual(""){
+            if !empty{
                 if calcText.text?.suffix(1) != "+" && calcText.text?.suffix(1) != "/" && calcText.text?.suffix(1) != "-" && calcText.text?.suffix(1) != "*"{
                     if !complete {
 
@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     operatorr = "*"
                     leftLabel.text = ""
                     } else {
-                        leftLabel.text = "The equation is done, press equal"
+                        leftLabel.text = "The equation is done, press equal or clear"
                     }
                 } else {
                     leftLabel.text = "There is already an operator there"
@@ -68,33 +68,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func minus(_ sender: UIButton) {
-        if !complete {
-        if !leftText.isEditing && !rightText.isEditing{
-            if !leftText.isEqual(""){
-                if calcText.text?.suffix(1) != "+" && calcText.text?.suffix(1) != "/" && calcText.text?.suffix(1) != "-" && calcText.text?.suffix(1) != "*"{
-                    calcText.text = calcText.text! + "-"
-                    operatorr = "-"
-                    leftLabel.text = ""
-                    
-                } else {
-                    leftLabel.text = "There is already an operator there"
-                }
-            } else {
-                leftLabel.text = "There arent any numbers"
-            }
-        }
-        } else {
-            leftLabel.text = "The equation is done, press equal"
-        }
-    }
-    @IBAction func add(_ sender: UIButton) {
-        if !complete {
         if !leftText.isEditing && !rightText.isEditing{
             if !empty{
                 if calcText.text?.suffix(1) != "+" && calcText.text?.suffix(1) != "/" && calcText.text?.suffix(1) != "-" && calcText.text?.suffix(1) != "*"{
-                    calcText.text = calcText.text! + "+"
-                    operatorr = "+"
+                    if !complete {
+
+                    calcText.text = calcText.text! + "-"
+                    operatorr = "-"
                     leftLabel.text = ""
+                    } else {
+                        leftLabel.text = "The equation is done, press equal or clear"
+                    }
                 } else {
                     leftLabel.text = "There is already an operator there"
                 }
@@ -102,8 +86,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 leftLabel.text = "There arent any numbers"
             }
         }
-        } else {
-            leftLabel.text = "The equation is done, press equal"
+    }
+    @IBAction func add(_ sender: UIButton) {
+        if !leftText.isEditing && !rightText.isEditing{
+            if !empty{
+                if calcText.text?.suffix(1) != "+" && calcText.text?.suffix(1) != "/" && calcText.text?.suffix(1) != "-" && calcText.text?.suffix(1) != "*"{
+                    if !complete {
+
+                    calcText.text = calcText.text! + "+"
+                    operatorr = "+"
+                    leftLabel.text = ""
+                    } else {
+                        leftLabel.text = "The equation is done, press equal or clear"
+                    }
+                } else {
+                    leftLabel.text = "There is already an operator there"
+                }
+            } else {
+                leftLabel.text = "There arent any numbers"
+            }
         }
     }
 //    @IBAction func sqrt(_ sender: UIButton) {
